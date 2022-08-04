@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { NavLink, Route, useParams } from 'react-router-dom';
 
@@ -9,7 +9,11 @@ import Fab from './Fab';
 
 const PokemonBrowser = () => {
   const dispatch = useDispatch();
-  dispatch(getPokemon());
+
+  useEffect( () => {
+    dispatch(getPokemon());
+  }, [dispatch])
+
 
   const { pokemonId } = useParams();
   const pokemon = useSelector(state => {
